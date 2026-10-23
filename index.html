@@ -1,0 +1,19 @@
+tr.querySelector(".btn-a").onclick = () => mark(s.id, "A");
+ tr.querySelector(".btn-del").onclick = () => removeStudent(s.id);
+ tableBody.appendChild(tr);
+ });
+ emptyMsg.style.display = list.length ? "none" : "block";
+ updateSummary();
+}
+function updateSummary() {
+ const d = dateInput.value;
+ document.getElementById("total").textContent = students.length;
+ document.getElementById("present").textContent =
+ students.filter(s => s.records[d] === "P").length;
+ document.getElementById("absent").textContent =
+ students.filter(s => s.records[d] === "A").length;
+}
+document.getElementById("addBtn").addEventListener("click", addStudent);
+dateInput.addEventListener("change", render);
+searchInput.addEventListener("input", render);
+render();
